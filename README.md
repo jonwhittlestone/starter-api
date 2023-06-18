@@ -7,7 +7,7 @@ make up-build
 
 Run the command above and then visit: http://localhost:8004 
 
-## Debugging: VSCode debugging FastAPI 
+## Debugging: Debugging FastAPI using vscode
 
 1. Run this:
     ```bash
@@ -21,3 +21,12 @@ Run the command above and then visit: http://localhost:8004
 4. Visit: http://localhost:8004 
 
 5. The vscode debugger will pause execution at your breakpoint.
+
+## Features
+
+```
+- [x] Dockerised w/debug
+- [ ] Postgres service
+- [ ] Containerised tests
+- [ ] Github Action to run tests
+```
