@@ -1,12 +1,23 @@
-# vscode-debugging-a-dockerised-fastapi-app
+# starter-api
 
-```json
-{
-    "step-one": "Run `make up-dbg-build`",
-    "step-two": "In vscode add a breakpoint",
-    "step-three": "Run the debugger (F5)",
-    "step-four": "Open the browser to http://localhost:8004",
-    "step-five": "It will pause execution at the breakpoint"
-
-}
+## Usage
+```bash
+make up-build
 ```
+
+Run the command above and then visit: http://localhost:8004 
+
+## Debugging: VSCode debugging FastAPI 
+
+1. Run this:
+    ```bash
+    make up-dbg-build
+    ```
+
+2. In vscode add a breakpoint
+
+3. Run the debugger (F5)
+
+4. Visit: http://localhost:8004 
+
+5. The vscode debugger will pause execution at your breakpoint.
