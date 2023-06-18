@@ -10,6 +10,6 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY ./project /usr/src/app
+COPY ./backend /usr/src/app
 
-CMD ["uvicorn", "project.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

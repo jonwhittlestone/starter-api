@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  tests-vscode-debug-setup:
+    image: tests-vscode-debug-setup
+    build:
+      context: .
+      dockerfile: ./Dockerfile.test
+    volumes:
+      - ./backend:/usr/src/app/backend
+    # command: ["pytest", "tests"]
+    environment:
+      - APP_MESSAGE=Hello debugger
+    ports:
+      - 5679:5679

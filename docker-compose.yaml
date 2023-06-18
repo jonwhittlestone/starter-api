@@ -10,4 +10,4 @@ services:
       - 8004:8000
     command: uvicorn main:app --host 0.0.0.0 --reload
     volumes:
-      - ./project:/usr/src/app/project
+      - ./backend:/usr/src/app/backend
