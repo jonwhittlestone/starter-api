@@ -27,6 +27,7 @@ Run the command above and then visit: http://localhost:8004
 ```
 - [x] Dockerised w/debug
 - [ ] Postgres service
+- [ ] Dynaconf config management
 - [ ] Containerised tests
 - [ ] Github Action to run tests
 ```
