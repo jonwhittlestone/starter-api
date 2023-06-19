@@ -17,6 +17,7 @@ services:
       - ./backend:/usr/src/app/backend
     environment:
       - DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/starter_db_dev
+      - ENV_FOR_DYNACONF=development
     ports:
       - 8004:8000
       - 5678:5678

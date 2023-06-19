@@ -27,10 +27,12 @@ Run the command above and then visit: http://127.0.0.1:8004
 ```
 - [x] Dockerised w/debug
 - [x] Postgres service, SQLModel + SQLAlchemy, Alembic migrations
-- [ ] Poetry, Dynaconf
+- [x] Poetry, Dynaconf
 - [ ] Containerised tests
 - [ ] Github Action to run tests
 - [ ] Production deployment
+- [ ] Logging + APM
+- [ ] Pre-commit: black, isort
 - [ ] Tag this repo.
 ```
 
@@ -45,17 +47,22 @@ Run the command above and then visit: http://127.0.0.1:8004
 
 ## Snippets & Resources
 
-### Check Provisioning
-- `docker-compose exec db psql --username=postgres --dbname=starter_db_dev`
-- `\dt`
+#### Container Development aka. start a-fresh
+```
+make rebuild
+```
+#### Check DB Provisioning
+```bash
+docker-compose exec db psql --username=postgres --dbname=starter_db_dev
 
-### Insert a record
-- `make up`; 
-- `curl -d '{"name":"Blood Sugar Sex Magik", "artist":"RHCP", "year":"1991"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:8004/albums`
+\dt
+```
+#### Insert a record
+```bash
+curl -d '{"name":"Blood Sugar Sex Magik", "artist":"RHCP", "year":"1991"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:8004/albums
+```
 
-### Start a-fresh
-- `make down-v; make up-build`
 
-### Alembic Migrations
+#### Alembic Migrations
 - https://testdriven.io/blog/fastapi-sqlmodel/
 - https://alembic.sqlalchemy.org/en/latest/cookbook.html#using-asyncio-with-alembic
