@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    # Using Debugpy
+    command: [
+      "bash", 
+      "-c",
+      "while !</dev/tcp/db/5432; do sleep 1; done; python -m debugpy --listen 0.0.0.0:5678 -m uvicorn backend.main:app --host 0.0.0.0 --reload"
+    ]
+
+
+    volumes:
+      - ./backend:/usr/src/app/backend
+    environment:
+      - DATABASE_URL=postgresql://postgresql_starter_user:postgresql_starter_user@db/project_starter_dev
+    ports:
+      - 8004:8000
+      - 5678:5678
+    depends_on:
+      - db
+  db:
+    image: postgres:15.1-alpine
+    environment:
+      - POSTGRES_USER=project_starter_user
+      - POSTGRES_PASSWORD=project_starter_pwd
+      - POSTGRES_DB=project_starter_dev
+    expose:
+      - 5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

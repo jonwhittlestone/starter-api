@@ -13,9 +13,3 @@ up:
 
 up-build:
 	docker-compose up --build;
-
-up-dbg:
-	docker-compose -f docker-compose.debug.yml up
-
-up-dbg-build:
-	docker-compose -f docker-compose.debug.yml up --build

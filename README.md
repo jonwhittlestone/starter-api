@@ -11,7 +11,7 @@ Run the command above and then visit: http://localhost:8004
 
 1. Run this:
     ```bash
-    make up-dbg-build
+    make up-build
     ```
 
 2. In vscode add a breakpoint
@@ -31,3 +31,12 @@ Run the command above and then visit: http://localhost:8004
 - [ ] Containerised tests
 - [ ] Github Action to run tests
 ```
+
+<!-- 
+```
+- [ ] Simple React Typescript Frontend
+- [ ] Okta auth
+- [ ] Rename starter-full-stack-with-sensible-defaults
+
+```
+-->

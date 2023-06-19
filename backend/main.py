@@ -16,10 +16,10 @@ def home(request: Request):
     ...
     return {
         "heading": "Follow steps below to get vscode step debugging with FastAPI",
-        "step-one": "Run `make up-dbg-build`",
+        "step-one": "Run `make up-build`",
         "step-two": "In vscode add a breakpoint",
         "step-three": "Run the debugger (F5)",
-        "step-four": "Open the browser to http://localhost:8004",
+        "step-four": "Open the browser to http://127.0.0.1:8004",
         "step-five": "It will pause execution at the breakpoint"
     }
     #return templates.TemplateResponse("home.html", context={"request": request})
