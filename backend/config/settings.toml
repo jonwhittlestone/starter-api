@@ -1,0 +1,11 @@
+[default]
+APP_NAME="Starter API"
+
+[development]
+APP_NAME="Starter API DEV"
+
+[staging]
+APP_NAME="Starter API ST"
+
+[production]
+APP_NAME="Starter API PR"

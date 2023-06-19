@@ -1,6 +1,7 @@
 from fastapi import Body, FastAPI, Depends, Request
 from .db import init_db, get_session
 from .models import Album, AlbumCreate
+from .config.dyna import settings
 
 from sqlalchemy.future import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -10,13 +11,22 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 
-app = FastAPI()
+app = FastAPI(title=settings.APP_NAME,)
 app.mount("/static", StaticFiles(directory="backend/static"), name="static")
 templates = Jinja2Templates(directory="backend/templates")
 
 @app.on_event("startup")
 async def on_startup():
     await init_db()
+
+
+@app.get("/health")
+def health():
+    return JSONResponse(status_code=200, 
+                        content={
+                            "APP_NAME": settings.APP_NAME
+                        })
+
 
 @app.get("/")
 def home(request: Request):
