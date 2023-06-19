@@ -5,7 +5,7 @@
 make up-build
 ```
 
-Run the command above and then visit: http://localhost:8004 
+Run the command above and then visit: http://127.0.0.1:8004 
 
 ## Debugging: Debugging FastAPI using vscode
 
