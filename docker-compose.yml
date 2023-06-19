@@ -16,7 +16,7 @@ services:
     volumes:
       - ./backend:/usr/src/app/backend
     environment:
-      - DATABASE_URL=postgresql://postgresql_starter_user:postgresql_starter_user@db/project_starter_dev
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/starter_db_dev
     ports:
       - 8004:8000
       - 5678:5678
@@ -25,9 +25,10 @@ services:
   db:
     image: postgres:15.1-alpine
     environment:
-      - POSTGRES_USER=project_starter_user
-      - POSTGRES_PASSWORD=project_starter_pwd
-      - POSTGRES_DB=project_starter_dev
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=starter_db_dev
+
     expose:
       - 5432
     volumes:

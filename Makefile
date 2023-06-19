@@ -13,3 +13,6 @@ up:
 
 up-build:
 	docker-compose up --build;
+
+down-v:
+	docker-compose down -v && sudo rm -rf postgres-data

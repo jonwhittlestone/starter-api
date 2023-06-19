@@ -1,4 +1,10 @@
-from fastapi import Body, FastAPI, Form, Request
+from fastapi import Body, FastAPI, Depends, Request
+from .db import init_db, get_session
+from .models import Album, AlbumCreate
+
+from sqlalchemy.future import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -8,7 +14,9 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="backend/static"), name="static")
 templates = Jinja2Templates(directory="backend/templates")
 
-
+@app.on_event("startup")
+async def on_startup():
+    await init_db()
 
 @app.get("/")
 def home(request: Request):
@@ -24,13 +32,20 @@ def home(request: Request):
     }
     #return templates.TemplateResponse("home.html", context={"request": request})
 
+@app.get("/albums", response_model=list[Album])
+async def get_songs(session: AsyncSession = Depends(get_session)):
+    result = await session.execute(select(Album))
+    albums = result.scalars().all()
+    return [
+            Album(name=album.name, artist=album.artist, year=album.year, id=album.id) 
+            for album in albums
+    ]
 
-@app.post("/tasks", status_code=201)
-def run_task(payload = Body(...)):
-    task_type = payload["type"]
-    return JSONResponse(task_type)
 
-
-@app.get("/tasks/{task_id}")
-def get_status(task_id):
-    return JSONResponse(task_id)
+@app.post("/albums")
+async def add_album(album: AlbumCreate, session: AsyncSession = Depends(get_session)):
+    album = Album(name=album.name, artist=album.artist, year=album.year)
+    session.add(album)
+    await session.commit()
+    await session.refresh(album)
+    return album
