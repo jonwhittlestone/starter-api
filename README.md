@@ -29,6 +29,7 @@ Run the command above and then visit: http://127.0.0.1:8004
 - [x] Postgres service, SQLModel + SQLAlchemy, Alembic migrations
 - [x] Poetry, Dynaconf
 - [ ] Containerised tests
+    - docker-compose exec web pytest .
 - [ ] Github Action to run tests
 - [ ] Production deployment
 - [ ] Logging + APM

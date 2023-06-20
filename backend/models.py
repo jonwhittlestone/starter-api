@@ -7,7 +7,9 @@ class AlbumBase(SQLModel):
     year: Optional[int] = None
 
 class Album(AlbumBase, table=True):
+    
     id: int = Field(default=None, primary_key=True)
 
 class AlbumCreate(AlbumBase):
+    extend_existing=True
     pass
