@@ -1,4 +1,7 @@
+import uvicorn
+
 from fastapi import Body, FastAPI, Depends, Request
+from starlette.status import HTTP_201_CREATED
 from .db import init_db, get_session
 from .models import Album, AlbumCreate
 from .config.dyna import settings
@@ -24,7 +27,8 @@ async def on_startup():
 def health():
     return JSONResponse(status_code=200, 
                         content={
-                            "APP_NAME": settings.APP_NAME
+                            "app_name": settings.APP_NAME,
+                            "current_env": settings.current_env,
                         })
 
 
@@ -52,10 +56,11 @@ async def get_songs(session: AsyncSession = Depends(get_session)):
     ]
 
 
-@app.post("/albums")
+@app.post("/albums", status_code=HTTP_201_CREATED, response_model=Album)
 async def add_album(album: AlbumCreate, session: AsyncSession = Depends(get_session)):
     album = Album(name=album.name, artist=album.artist, year=album.year)
     session.add(album)
     await session.commit()
     await session.refresh(album)
     return album
+

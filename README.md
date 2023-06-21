@@ -7,7 +7,10 @@ make up-build
 
 Run the command above and then visit: http://127.0.0.1:8004 
 
-## Debugging: Debugging FastAPI using vscode
+
+### Run the container 
+
+## Debugging: Debugging FastAPI using VSCode
 
 1. Run this:
     ```bash
@@ -26,14 +29,14 @@ Run the command above and then visit: http://127.0.0.1:8004
 
 ```
 - [x] Dockerised w/debug
-- [x] Postgres service, SQLModel + SQLAlchemy, Alembic migrations
+- [x] Postgres service / SQLModel + SQLAlchemy / Alembic migrations
 - [x] Poetry, Dynaconf
-- [ ] Containerised tests
+- [x] Containerised tests
 - [ ] Github Action to run tests
+- [ ] FastAPI repositories, schemas / logging / cleanup and mocked tests
 - [ ] Production deployment
-- [ ] Logging + APM
-- [ ] Pre-commit: black, isort
-- [ ] Tag this repo.
+- [ ] Pre-commit / manage.py / migrations
+- [ ] Tag this repo and release
 ```
 
 <!-- 
@@ -47,10 +50,20 @@ Run the command above and then visit: http://127.0.0.1:8004
 
 ## Snippets & Resources
 
+
 #### Container Development aka. start a-fresh
 ```
 make rebuild
 ```
+#### Run the container tests
+
+Warning: The `make rebuild-d` command will remove your postgres volume. 
+
+```bash
+make rebuild-d; \
+docker-compose exec web-test pytest tests -x -o log_cli=true
+```
+
 #### Check DB Provisioning
 ```bash
 docker-compose exec db psql --username=postgres --dbname=starter_db_dev

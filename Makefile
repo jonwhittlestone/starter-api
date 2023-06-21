@@ -23,3 +23,7 @@ down-v:
 rebuild:
 	docker-compose down -v && sudo rm -rf postgres-data;
 	docker-compose up --build;
+
+rebuild-d:
+	docker-compose down -v && sudo rm -rf postgres-data;
+	docker-compose up --build -d;

@@ -21,6 +21,7 @@ RUN apt-get update &&  \
     postgresql \
     gcc \
     python3-dev \
+    python3-pytest \
     libc6 \
     gnupg
 
