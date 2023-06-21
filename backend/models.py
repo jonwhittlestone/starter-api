@@ -2,6 +2,7 @@ from typing import Optional
 from sqlmodel import SQLModel, Field
 
 class AlbumBase(SQLModel):
+    __table_args__ = {'extend_existing': True}
     name: str
     artist: str
     year: Optional[int] = None

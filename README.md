@@ -7,7 +7,10 @@ make up-build
 
 Run the command above and then visit: http://127.0.0.1:8004 
 
-## Debugging: Debugging FastAPI using vscode
+
+### Run the container 
+
+## Debugging: Debugging FastAPI using VSCode
 
 1. Run this:
     ```bash
@@ -28,8 +31,7 @@ Run the command above and then visit: http://127.0.0.1:8004
 - [x] Dockerised w/debug
 - [x] Postgres service, SQLModel + SQLAlchemy, Alembic migrations
 - [x] Poetry, Dynaconf
-- [ ] Containerised tests
-    - docker-compose exec web pytest .
+- [x] Containerised tests
 - [ ] Github Action to run tests
 - [ ] Production deployment
 - [ ] Logging + APM
@@ -47,6 +49,13 @@ Run the command above and then visit: http://127.0.0.1:8004
 -->
 
 ## Snippets & Resources
+
+#### Run the container tests
+
+```bash
+make rebuild-d; \
+docker-compose exec web-test pytest tests -x -o log_cli=true
+```
 
 #### Container Development aka. start a-fresh
 ```
