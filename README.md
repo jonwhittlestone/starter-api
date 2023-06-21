@@ -50,17 +50,20 @@ Run the command above and then visit: http://127.0.0.1:8004
 
 ## Snippets & Resources
 
+
+#### Container Development aka. start a-fresh
+```
+make rebuild
+```
 #### Run the container tests
+
+Warning: The `make rebuild-d` command will remove your postgres volume. 
 
 ```bash
 make rebuild-d; \
 docker-compose exec web-test pytest tests -x -o log_cli=true
 ```
 
-#### Container Development aka. start a-fresh
-```
-make rebuild
-```
 #### Check DB Provisioning
 ```bash
 docker-compose exec db psql --username=postgres --dbname=starter_db_dev
