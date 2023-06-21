@@ -29,14 +29,14 @@ Run the command above and then visit: http://127.0.0.1:8004
 
 ```
 - [x] Dockerised w/debug
-- [x] Postgres service, SQLModel + SQLAlchemy, Alembic migrations
+- [x] Postgres service / SQLModel + SQLAlchemy / Alembic migrations
 - [x] Poetry, Dynaconf
 - [x] Containerised tests
 - [ ] Github Action to run tests
+- [ ] FastAPI repositories, schemas / logging / cleanup and mocked tests
 - [ ] Production deployment
-- [ ] Logging + APM
-- [ ] Pre-commit: black, isort
-- [ ] Tag this repo.
+- [ ] Pre-commit / manage.py / migrations
+- [ ] Tag this repo and release
 ```
 
 <!-- 
