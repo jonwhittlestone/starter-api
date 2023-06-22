@@ -63,7 +63,7 @@ Warning: The `make rebuild-d` command will remove your postgres volume.
 
 ```bash
 make rebuild-d; \
-docker-compose exec web-test pytest tests -x -o log_cli=true
+docker-compose exec web-test tests -x -o log_cli=true
 ```
 
 #### Check DB Provisioning

@@ -18,12 +18,12 @@ up-build-d:
 	docker-compose up -d --build;
 
 down-v:
-	docker-compose down -v && sudo rm -rf postgres-data
+	docker-compose down -v --remove-orphans && sudo rm -rf postgres-data
 
 rebuild:
-	docker-compose down -v && sudo rm -rf postgres-data;
+	docker-compose down -v --remove-orphans && sudo rm -rf postgres-data;
 	docker-compose up --build;
 
 rebuild-d:
-	docker-compose down -v && sudo rm -rf postgres-data;
+	docker-compose down -v --remove-orphans && sudo rm -rf postgres-data;
 	docker-compose up --build -d;
