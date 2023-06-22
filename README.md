@@ -33,6 +33,8 @@ Run the command above and then visit: http://127.0.0.1:8004
 - [x] Poetry, Dynaconf
 - [x] Containerised tests
 - [ ] Github Action to run tests
+    - https://earthly.dev/blog/github-actions-and-docker/
+    - https://testdriven.io/blog/deploying-django-to-linode-with-docker-and-github-actions/
 - [ ] FastAPI repositories, schemas / logging / cleanup and mocked tests
 - [ ] Production deployment
 - [ ] Pre-commit / manage.py / migrations
@@ -74,6 +76,24 @@ docker-compose exec db psql --username=postgres --dbname=starter_db_dev
 ```bash
 curl -d '{"name":"Blood Sugar Sex Magik", "artist":"RHCP", "year":"1991"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:8004/albums
 ```
+
+#### Docker: Build, Tag and Push (GitHub packages)
+```bash
+docker build -f Dockerfile -t ghcr.io/jonwhittlestone/starter-api/web:la
+test .
+
+docker build -f Dockerfile.test -t ghcr.io/jonwhittlestone/starter-api/web-test:latest .
+
+docker login ghcr.io -u jonwhittlestone -p changeme
+
+docker push ghcr.io/jonwhittlestone/starter-api/web:latest
+
+docker push ghcr.io/jonwhittlestone/starter-api/web-test:latest
+
+```
+Then check:
+
+https://github.com/jonwhittlestone?tab=packages
 
 
 #### Alembic Migrations
