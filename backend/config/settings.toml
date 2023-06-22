@@ -4,6 +4,9 @@ APP_NAME="Starter API"
 [development]
 APP_NAME="Starter API DEV"
 
+[ci]
+APP_NAME="Starter API CI"
+
 [testing]
 APP_NAME="Starter API TEST"
 
