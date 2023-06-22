@@ -37,7 +37,7 @@ jobs:
           docker-compose -f docker-compose.ci.yml up -d --build
       - name: Test with pytest
         run: |
-          docker-compose exec web-test pytest tests -x -o log_cli=true
+          docker-compose run web-test pytest tests -x -o log_cli=true
 
     #   - name: Push images
     #     run: |
