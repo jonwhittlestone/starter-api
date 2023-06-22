@@ -1,41 +1,21 @@
 version: '3.8'
 
 services:
-  web-test:
+  api-test:
     build:
       context: .
       dockerfile: ./Dockerfile.test
-
-    env_file: .env
     # Using Debugpy
     command: [
       "bash", 
       "-c",
-      "while !</dev/tcp/db/5432; do sleep 1; done; python -m debugpy --listen 0.0.0.0:5679 -m uvicorn backend.main:app --host 0.0.0.0 --reload"
+      "while !</dev/tcp/db/5432; do sleep 1; done; pytest tests"
     ]
     volumes:
       - ./backend:/usr/src/app/backend
-    ports:
-      - 8005:8000
-      - 5679:5679
-    depends_on:
-      - web
-  web:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    # Using Debugpy
-    env_file: .env
-    command: [
-      "bash", 
-      "-c",
-      "while !</dev/tcp/db/5432; do sleep 1; done; python -m debugpy --listen 0.0.0.0:5678 -m uvicorn backend.main:app --host 0.0.0.0 --reload"
-    ]
-    volumes:
-      - ./backend:/usr/src/app/backend
-    ports:
-      - 8004:8000
-      - 5678:5678
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/starter_db_dev
+      - ENV_FOR_DYNACONF=development
     depends_on:
       - db
   db:
