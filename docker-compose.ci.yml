@@ -12,6 +12,8 @@ services:
       "-c",
       "while !</dev/tcp/db/5432; do sleep 1; done; python -m debugpy --listen 0.0.0.0:5678 -m uvicorn backend.main:app --host 0.0.0.0 --reload"
     ]
+    volumes:
+      - ./backend:/usr/src/app/backend
     ports:
       - 8004:8000
       - 5678:5678
