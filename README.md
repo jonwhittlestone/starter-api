@@ -8,6 +8,12 @@ make up-build
 
 Run the command above and then visit: http://127.0.0.1:8004 
 
+### Run the tests:
+
+```bash
+make d-test
+```
+
 
 > See [snippets-resources.md](snippets-resources.md) for handy snippets and resources.
 
@@ -35,7 +41,7 @@ Run the command above and then visit: http://127.0.0.1:8004
 - [x] Poetry, Dynaconf
 - [x] Containerised tests
 - [x] Github Action to run tests
-- [ ] FastAPI repositories, schemas / logging / cleanup and mocked tests
+- [ ] FastAPI config, routers, middleware, model, auth, repositories, schemas, logging, cleanup and mocked tests.
 - [ ] Production deployment
 - [ ] Pre-commit / manage.py / migrations
 - [ ] Tag this repo and release

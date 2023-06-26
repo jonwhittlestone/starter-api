@@ -5,6 +5,7 @@ from starlette.status import HTTP_201_CREATED
 from .db import init_db, get_session
 from .models import Album, AlbumCreate
 from .config.dyna import settings
+from .config import setts
 
 from sqlalchemy.future import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -14,7 +15,13 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 
-app = FastAPI(title=settings.APP_NAME,)
+app = FastAPI(
+    title=setts.SERVICE_LABEL,
+    description=setts.SERVICE_DESCRIPTION,
+    version=setts.SERVICE_VERSION,
+    debug=setts.DEBUG,
+)
+
 app.mount("/static", StaticFiles(directory="backend/static"), name="static")
 templates = Jinja2Templates(directory="backend/templates")
 
@@ -27,7 +34,6 @@ async def on_startup():
 def health():
     return JSONResponse(status_code=200, 
                         content={
-                            "app_name": settings.APP_NAME,
                             "current_env": settings.current_env,
                         })
 

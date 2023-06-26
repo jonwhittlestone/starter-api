@@ -27,3 +27,7 @@ rebuild:
 rebuild-d:
 	docker-compose down -v --remove-orphans && sudo rm -rf postgres-data;
 	docker-compose up --build -d;
+
+d-test:
+	# Rebuilds container and runs docker test
+	docker-compose build web-test && docker-compose run web-test pytest tests -x -o log_cli=true
