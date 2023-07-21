@@ -1,17 +1,17 @@
 [default]
-APP_NAME="Starter API"
-
+APP_LABEL="Starter API"
+ 
 [development]
-APP_NAME="Starter API DEV"
+APP_LABEL="Starter API DEV"
 
 [ci]
-APP_NAME="Starter API CI"
+APP_LABEL="Starter API CI"
 
 [testing]
-APP_NAME="Starter API TEST"
+APP_LABEL="Starter API TEST"
 
 [staging]
-APP_NAME="Starter API ST"
+APP_LABEL="Starter API ST"
 
 [production]
-APP_NAME="Starter API PR"
+APP_LABEL="Starter API PR"
